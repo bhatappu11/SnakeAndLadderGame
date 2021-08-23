@@ -1,48 +1,95 @@
 package com.bridgelabz.snakeandladder;
 
 public class SnakeAndLadder {
-		public static final int NO_PLAY=0;
-		public static final int LADDER=1;
-		public static final int SNAKE=2;
-		public static void main(String[] args) {
-			System.out.println("Welcome to snake and ladder game");
-			System.out.println("The Player Starts at Position 0");
-			int currentPosition1=0,numberOnDice=0,count=0;
-			while(currentPosition1<100) {
+	public static final int NO_PLAY=0;
+	public static final int LADDER=1;
+	public static final int SNAKE=2;
+	public static void main(String[] args) {
+	System.out.println("Welcome to Snake and Ladder game");
+	System.out.println("The Player Starts at Position 0");
+	int numberOnDice=0,currentPosition1=0,currentPosition2=0;
+	boolean player1Turn=true,player2Turn=false,player1=false,player2=false;
+	while(currentPosition1<100 && currentPosition2<100)
+	{
+		if(player1Turn)
+		{
+			System.out.println("Player 1 Turn");
+			player1Turn=false;
 			numberOnDice=(int)((Math.random()*100)%6)+1;
-			System.out.println("Number on dice "+numberOnDice);
+			System.out.println("The Number on the Die is "+numberOnDice);
 			int option=(int)(Math.random()*100)%3;
-			count++;
 			switch(option) {
-			case NO_PLAY:
-			System.out.println("Option is No Play");
-			break;
-			case LADDER:
-			System.out.println("Option is Ladder");
-			currentPosition1=currentPosition1+numberOnDice;
-			break;
-			case SNAKE:
-			System.out.println("Option is Snake");
-			currentPosition1=currentPosition1-numberOnDice;
-			break;
+				case NO_PLAY:
+				System.out.println("Option is No Play");
+				player2Turn=true;
+				break;
+				case LADDER:
+				System.out.println("Option is Ladder");
+				currentPosition1=currentPosition1+numberOnDice;
+				player1Turn=true;
+				break;
+				case SNAKE:
+				System.out.println("Option is Snake");
+				currentPosition1=currentPosition1-numberOnDice;
+				player2Turn=true;
+				break;
+			
 			}
-			if(currentPosition1<0) 
-			{
+			if(currentPosition1<0) {
 				currentPosition1=0;
 			}	
-			if(currentPosition1>100) 
-			{
+			if(currentPosition1>100) {
 				currentPosition1=currentPosition1-numberOnDice;
 			}
 			if(currentPosition1==100)
 			{
-				System.out.println("player one done playing");
+				player1=true;
 				break;
 			}
-			System.out.println("Current position of the player 1: "+currentPosition1);
+			System.out.println("Current Position of Player 1: "+currentPosition1);
 			}
-			System.out.println("Current Position of Player 1 and turns taken: "+currentPosition1+" "+count);
+			if(player2Turn)
+			{
+				System.out.println("Player 2 Turn");
+				player2Turn=false;
+				numberOnDice=(int)((Math.random()*100)%6)+1;
+				System.out.println("The Number on the Die is "+numberOnDice);
+				int option=(int)(Math.random()*100)%3;
+				switch(option) {
+				case NO_PLAY:
+				System.out.println("Option is No Play");
+				player1Turn=true;
+				break;
+				case LADDER:
+				System.out.println("Option is Ladder");
+				currentPosition2=currentPosition2+numberOnDice;
+				player2Turn=true;
+				break;
+				case SNAKE:
+				System.out.println("Option is Snake");
+				currentPosition2=currentPosition2-numberOnDice;
+				player1Turn=true;
+				break;
+			
+			}
+			if(currentPosition2<0) {
+				currentPosition2=0;
+			}	
+			if(currentPosition2>100) {
+				currentPosition2=currentPosition2-numberOnDice;
+			}
+			if(currentPosition2==100)
+			{
+				player2=true;
+				break;
+			}
+			System.out.println("Current Position of Player 2: "+currentPosition2);
+			}
+			}
+			if(player1)
+				System.out.println("The Player 1 has won the game");
+			else if(player2)
+				System.out.println("The Player 2 has won the game");
 		
-
-}
+			}
 }

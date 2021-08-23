@@ -39,6 +39,7 @@ public class SnakeAndLadder {
 				System.out.println("player one done playing");
 				break;
 			}
+			System.out.println("Current position of the player 1: "+currentPosition1);
 			}
 			System.out.println("Current Position of Player 1 and turns taken: "+currentPosition1+" "+count);
 		

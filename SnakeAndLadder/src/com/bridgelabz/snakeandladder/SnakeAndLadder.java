@@ -7,11 +7,12 @@ public class SnakeAndLadder {
 		public static void main(String[] args) {
 			System.out.println("Welcome to snake and ladder game");
 			System.out.println("The Player Starts at Position 0");
-			int currentPosition1=0,numberOnDice=0;
+			int currentPosition1=0,numberOnDice=0,count=0;
 			while(currentPosition1<100) {
 			numberOnDice=(int)((Math.random()*100)%6)+1;
 			System.out.println("Number on dice "+numberOnDice);
 			int option=(int)(Math.random()*100)%3;
+			count++;
 			switch(option) {
 			case NO_PLAY:
 			System.out.println("Option is No Play");
@@ -39,6 +40,8 @@ public class SnakeAndLadder {
 				break;
 			}
 			}
+			System.out.println("Current Position of Player 1 and turns taken: "+currentPosition1+" "+count);
+		
 
 }
 }
